@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=DuckMouse
+GenericName=Cài đặt chuột
+Comment=Cuộn mượt và giữ nút chuột kéo 4 hướng làm phím tắt
+Exec=duckmouse-settings
+Icon=vn.vduck.DuckMouse
+Terminal=false
+Categories=Settings;HardwareSettings;
+Keywords=mouse;chuột;scroll;cuộn;gesture;cử chỉ;
+StartupNotify=true

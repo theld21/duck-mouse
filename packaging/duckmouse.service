@@ -1,0 +1,12 @@
+[Unit]
+Description=DuckMouse - cuộn mượt + giữ nút kéo 4 hướng
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/duckmouse
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=graphical-session.target

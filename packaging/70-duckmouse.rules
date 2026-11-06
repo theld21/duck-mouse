@@ -1,0 +1,3 @@
+# duckmouse: cho phiên đăng nhập hiện tại dùng /dev/uinput và đọc chuột (không cần root, không cần nhóm input)
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_MOUSE}=="1", TAG+="uaccess"

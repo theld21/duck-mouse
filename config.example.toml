@@ -1,0 +1,70 @@
+# duckmouse – cấu hình chuột. Sửa xong LƯU LẠI là tự áp dụng, không cần khởi động lại.
+# Xem log: journalctl --user -u duckmouse -f
+
+# Chuột dùng (để trống = tự tìm). Ví dụ:
+# device = "/dev/input/by-id/usb-YICHIP_2.4G_Receiver-if01-event-mouse"
+device = ""
+
+[scroll]
+enabled = true      # false = cuộn như mặc định của Linux
+reverse = false     # đảo chiều cuộn
+speed = 1.0         # quãng cuộn mỗi nấc (1.0 = như Linux, 2.0 = gấp đôi)
+duration = 4.35     # độ trôi sau mỗi nấc: 1 = ngắn, 4.35 = như Mos, 5 = rất dài
+hz = 144            # số lần phát cuộn mỗi giây (nên ≥ tần số màn hình)
+
+[gesture]
+distance = 120         # kéo bao xa (đơn vị thô của chuột) thì tính 1 hướng
+freeze_cursor = false  # true = con trỏ đứng yên khi đang giữ nút cử chỉ
+
+# ── Gán nút ─────────────────────────────────────────────────────────────
+# Nút: middle (bánh xe) · back (hông sau) · forward (hông trước) · task
+# Mỗi nút: click = ấn nhả · left/right/up/down = giữ rồi kéo hướng đó
+#          wheel_up/wheel_down = giữ nút rồi lăn bánh xe (mỗi nấc chạy 1 lần)
+#          middle_click = giữ nút (hông) rồi bấm nút giữa
+# enabled = false để tắt toàn bộ chức năng gán của nút (nút như bình thường)
+# wait = giữ bao lâu (giây) rồi mới chạy cử chỉ (kéo nhanh hơn vẫn được tính)
+#
+# Giá trị:
+#   "default"  giữ nguyên chức năng gốc của nút      "none"  không làm gì
+#   Có sẵn:    copy paste cut select-all undo redo
+#              overview show-apps workspace-left workspace-right switch-app
+#              close-window minimize maximize fullscreen
+#              back forward new-tab close-tab reopen-tab reload prev-tab next-tab
+#              screenshot lock play-pause next-track prev-track volume-up volume-down mute
+#   "key:ctrl+shift+t"          phím tắt tuỳ ý (ctrl shift alt super, a-z, 0-9, f1-f12, left, pageup, print…)
+#   "cmd:xdg-open ~/Downloads"  chạy lệnh
+
+[buttons.middle]
+enabled = true
+wait = 0.15
+click = "default"
+left = "workspace-left"
+right = "workspace-right"
+up = "overview"
+down = "cmd:xdg-open ~/Downloads"
+wheel_up = "default"
+wheel_down = "default"
+
+[buttons.back]
+enabled = true
+wait = 0.1
+click = "default"
+left = "copy"
+right = "paste"
+up = "select-all"
+down = "cut"
+wheel_up = "volume-up"
+wheel_down = "volume-down"
+middle_click = "mute"
+
+[buttons.forward]
+enabled = true
+wait = 0.1
+click = "default"
+left = "undo"
+right = "redo"
+up = "screenshot"
+down = "close-tab"
+wheel_up = "prev-tab"
+wheel_down = "next-tab"
+middle_click = "reopen-tab"
